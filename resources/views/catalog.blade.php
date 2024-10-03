@@ -1,11 +1,5 @@
 @include ('/layouts/header')
-
-
-
 <input type="hidden" id='user_id' name="user_id" value='{{Auth::user()->id ?? null}}'>
-
-
-    <!-- Breadcrumb Start -->
     <div class="container-fluid">
         <div class="row px-xl-5">
             <div class="col-12">
@@ -15,19 +9,13 @@
             </div>
         </div>
     </div>
-    <!-- Breadcrumb End -->
 
-
-    <!-- Shop Start -->
     <div class="container-fluid">
         <div class="row px-xl-5">
-            <!-- Shop Sidebar Start -->
             <div class="col-lg-3 col-md-4">
                 <!-- Price Start -->
                 <h5 class="section-title position-relative text-uppercase mb-3"><span class="bg-secondary pr-3">Фильтрация</span></h5>
                 <div class="bg-light p-4 mb-30">
-
- 
                 @foreach ($categories as $category)
                     <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
                         <input type="checkbox" class="custom-control-input checkbox_category" id="check_{{$category->name}}" name='check_{{$category->name}}' value='{{$category->id}}'>
@@ -35,33 +23,19 @@
                         <span class="badge border font-weight-normal" style='color:gray;'>{{$category->count}}</span>
                     </div>
                 @endforeach
-
                 <button class="btn btn-primary px-3" id="showSelected">Найти</button>
                 <button id="clearFiltr" class="btn px-3" style='background-color: black; color:white; border: 0px;'>Сбросить</button>
-
                 </div>
-                <!-- Price End -->
-                
-
-            
-            <!-- Shop Sidebar End -->
-
-            <div id="subcategory">
-
-
+                <div id="subcategory">
+                </div>
             </div>
-            </div>
-
-            <!-- Shop Product Start -->
             <div class="col-lg-9 col-md-8">
                 <div class="row pb-3">
                     <div class="col-12 pb-1">
                         <div class="d-flex align-items-center justify-content-between mb-4">
                             <div>
-                                
                             </div>
                             <div class="ml-2">
-                                    
                             <select name="sort" id="sort" class='form-control' >
                                 <option value="default desc">По умолчанию</option>
                                 <option value="created_at desc">По новизне</option>
@@ -69,15 +43,9 @@
                                 <option value="price asc">Дешевле</option>
                                 <option value="price desc">Дороже</option>
                             </select>
-
                             </div>
                         </div>
                     </div>
-
-
-
-
-
 
                     <div id='catalog' class="d-flex flex-wrap">
                     @foreach ($products as $product)
@@ -112,27 +80,10 @@
                     </div>
                     @endforeach
                     </div>
-
-
-
-
                 </div>
             </div>
-            <!-- Shop Product End -->
         </div>
     </div>
-    <!-- Shop End -->
-
-
-
-
-
-
-
-
-
-
-
 
 <script src="/assets/js/catalog.js" defer type="module"></script>
 
