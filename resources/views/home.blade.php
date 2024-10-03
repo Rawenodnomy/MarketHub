@@ -57,14 +57,14 @@
                     <div class="pt-2">
                         <a href='/getFavoriteByUser' class="btn btn-block btn-primary font-weight-bold my-3 py-3">Избранные товары</a>
                         <a class="btn btn-block btn-danger font-weight-bold my-3 py-3" href="{{ route('logout') }}"
-                                       onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                        {{ __('Выйти') }}
-                                    </a>
+                            onclick="event.preventDefault();
+                            document.getElementById('logout-form').submit();">
+                            {{ __('Выйти') }}
+                         </a>
 
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                        @csrf
-                                    </form>
+                         <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                             @csrf
+                        </form>
                     </div>
                 </div>
 
