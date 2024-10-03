@@ -4,13 +4,9 @@
             <div class="col-lg-8">
                 <div id="header-carousel" class="carousel slide carousel-fade mb-30 mb-lg-0" data-ride="carousel">
                     <ol class="carousel-indicators">
-
                         @foreach ($banners as $banner)
                             <li data-target="#header-carousel" data-slide-to="{{$banner->num}}" @if ($banner->num==0) class="active" @endif></li>
                         @endforeach
-
-
-
                     </ol>
                     <div class="carousel-inner">
                         @foreach ($banners as $banner)
@@ -48,17 +44,6 @@
             </div>
         </div>
     </div>
-
-
-
-
-
-
-
-
-
-
-
     <div class="container-fluid pt-5">
         <div class="row px-xl-5 pb-3">
             <div class="col-lg-3 col-md-6 col-sm-12 pb-1">
@@ -87,15 +72,6 @@
             </div>
         </div>
     </div>
-
-
-
-
-
-
-
-
-
     <div class="container-fluid pt-5">
         <h2 class="section-title position-relative text-uppercase mx-xl-5 mb-4"><span class="bg-secondary pr-3">Категории</span></h2>
         <div class="row px-xl-5 pb-3">
@@ -116,47 +92,9 @@
             @endforeach
         </div>
     </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     <div class="container-fluid pt-5 pb-3">
         <h2 class="section-title position-relative text-uppercase mx-xl-5 mb-4"><span class="bg-secondary pr-3">Новые товары</span></h2>
         <div class="row px-xl-5">
-
-
-
-
             @foreach ($newProduct as $new)
                 <div class="col-lg-3 col-md-4 col-sm-6 pb-1">
                     <div class="product-item bg-light mb-4">
@@ -178,51 +116,13 @@
                             @else 
                                 <small>Еще нет отзывов</small>
                             @endif
-                                
                             </div>
                         </div>
                     </div>
                 </div>
             @endforeach
-
-
-            
-
         </div>
     </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    
-
-
-
-
     <div class="container-fluid pt-5 pb-3">
         <div class="row px-xl-5">
             <div class="col-md-6">
@@ -247,19 +147,9 @@
             </div>
         </div>
     </div>
-
-
-
-
-
-
 <div class="container-fluid pt-5 pb-3">
         <h2 class="section-title position-relative text-uppercase mx-xl-5 mb-4"><span class="bg-secondary pr-3">Лучшие товары</span></h2>
         <div class="row px-xl-5">
-
-
-
-
             @foreach ($topProduct as $top)
                 <div class="col-lg-3 col-md-4 col-sm-6 pb-1">
                     <div class="product-item bg-light mb-4">
@@ -281,20 +171,13 @@
                             @else 
                                 <small>Еще нет отзывов</small>
                             @endif
-                                
                             </div>
                         </div>
                     </div>
                 </div>
             @endforeach
-
-
-            
-
         </div>
     </div>
-
-
     <div class="container-fluid py-5">
     <h2 class="section-title position-relative text-uppercase mx-xl-5 mb-4"><span class="bg-secondary pr-3">Лучшие продавцы</span></h2>
         <div class="row px-xl-5">
@@ -317,13 +200,7 @@
             </div>
         </div>
     </div>
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <script src="/assets/lib/owlcarousel/assets/owl.carousel.min.js"></script>
 <script  src="/assets/js/main.js"></script> 
-
-
 @include ('/layouts/footer')
-
-
-
