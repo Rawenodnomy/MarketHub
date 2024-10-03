@@ -1,6 +1,5 @@
 @include ('/layouts/header')
 
-    <!-- Breadcrumb Start -->
     <div class="container-fluid">
         <div class="row px-xl-5">
             <div class="col-12">
@@ -10,10 +9,6 @@
             </div>
         </div>
     </div>
-    <!-- Breadcrumb End -->
-
-
-    <!-- Cart Start -->
     <div class="container-fluid" id='main_block'>
         <div class="row px-xl-5">
             <div class="col-lg-8 table-responsive mb-5">
@@ -52,22 +47,13 @@
                         <div class="mb-3">
                             <select class="form-control" id="address"></select>
                         </div>
-
                     </div>
-                    
                     <div class="pt-2" id='order_button'>
-                        
                     </div>
                 </div>
             </div>
         </div>
     </div>
-
-
-
-
-
-
 
 
 <script src="/assets/js/basketPage.js" defer type="module"></script>
