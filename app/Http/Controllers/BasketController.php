@@ -133,21 +133,10 @@ class BasketController extends Controller
             ->first();
 
         if ($basketItem) {
-
-
-
-
-
             $countProduct = DB::select('SELECT count FROM `products` WHERE id = ?', [$basketItem->product_id])[0];
             if ($countProduct->count==null){
                 $countProduct = DB::select('SELECT count FROM `products_sizes` WHERE product_id = ? AND size_id = ?', [$basketItem->product_id, $basketItem->size_id])[0];
             }
-
-
-
-
-
-
             if($validatedData['count']+1>$countProduct->count){
                 $basketItem->count =$countProduct->count;
                 $countBasket = DB::select('SELECT SUM(count) as count FROM `baskets` WHERE user_id = ?', [Auth::user()->id])[0]->count;
@@ -158,16 +147,10 @@ class BasketController extends Controller
                 $countBasket = DB::select('SELECT SUM(count) as count FROM `baskets` WHERE user_id = ?', [Auth::user()->id])[0]->count;
                 return response()->json(['success' => true, 'newCount'=> $validatedData['count']+1, 'message' => 'Количество товара обновлено.', 'count' => $countBasket]);
             }
-
-
-
-
-
         } else {
             return response()->json(['success' => false, 'message' => 'Товар не найден в корзине.'], 404);
         }
     }
-
 
     function minusProduct(Request $request){
         $validatedData = $request->validate([
@@ -189,8 +172,6 @@ class BasketController extends Controller
                 $countBasket = DB::select('SELECT SUM(count) as count FROM `baskets` WHERE user_id = ?', [Auth::user()->id])[0]->count;
                 return response()->json(['success' => true, 'newCount' => 0, 'count'=>$countBasket]);
             }
-
-
             
         } else {
             return response()->json(['success' => false, 'message' => 'Товар не найден в корзине.'], 404);
@@ -233,13 +214,11 @@ class BasketController extends Controller
         ]);
 
         DB::insert('INSERT INTO `orders` (`user_id`, `city_id`, `address_id`, `price`, `created_at`, `updated_at`) VALUES (?, ?, ?, ?, ?, ?)', [Auth::id(), $validatedData['city'], $validatedData['address'], $validatedData['total_sum'], date('Y-m-d'), date('Y-m-d')]);
-
         $order = DB::getPdo()->lastInsertId();
 
         DB::update('UPDATE `users` SET `city_id` = ?, `point_id` = ? WHERE `users`.`id` = ?', [$validatedData['city'], $validatedData['address'], Auth::id()]);
-
         $basket = Basket::where('user_id', Auth::id())->get();
-
+        
         foreach($basket as $item){
             $productPrice = DB::select('SELECT price FROM `products` WHERE id = ?', [$item->product_id]);
 
@@ -253,12 +232,9 @@ class BasketController extends Controller
                 DB::update('UPDATE `products` SET `count` = ? WHERE `products`.`id` = ?', [$productCount-$item->count, $item->product_id]);
             }
             $item->delete();
-
         }
-
         return response()->json(['success' => true, 'id'=>$order]);
     }
-
 
     function getCity(){
         $have_city=DB::select('SELECT city_id FROM users WHERE users.id = ?', [Auth::id()])[0]->city_id;
@@ -279,7 +255,6 @@ class BasketController extends Controller
         $validatedData = $request->validate([
             'id' => 'required',
         ]);
-
 
         $have_point=DB::select('SELECT point_id FROM users WHERE users.id = ?', [Auth::id()])[0]->point_id;
 
