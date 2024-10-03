@@ -10,7 +10,6 @@
                                 <img class="w-100 h-100" src="/images/products/{{$photo->photo}}" alt="{{$photo->photo}}">
                             </div>
                         @endforeach
-
                     </div>
                     <a class="carousel-control-prev" href="#product-carousel" data-slide="prev">
                         <i class="fa fa-2x fa-angle-left text-dark"></i>
@@ -20,10 +19,8 @@
                     </a>
                 </div>
             </div>
-
             <input type="hidden" id='product_id' name="product_id" value='{{$product->id}}'>
             <input type="hidden" id='user_id' data-name='{{Auth::user()->name ?? null}}' name="user_id" value='{{Auth::user()->id ?? null}}'>
-
             <div class="col-lg-7 h-auto mb-30">
                 <div class="h-100 bg-light p-30">
                     <h3>{{$product->name}}</h3>
@@ -34,11 +31,7 @@
                         </div>
                         <small class="pt-1">(<span class='count_reviews' data-count='{{count($reviews)}}'>{{count($reviews)}}</span> оценок)</small>
                     </div>
-
                     <input type="hidden" name="in_basket" id='in_basket' value='@if ($inBasket!=[]) true @else false @endif'>
-
-
-
                     <h3 class="font-weight-semi-bold mb-4">{{$product->price}} ₽</h3>
                     <!-- <p class="mb-4">{{$product->description}}</p> -->
                     <p>Продавец: <a href="/getSeller/{{$product->seller_id}}" style='color:black; text-decoration: underline;'>{{$product->seller}}</a></p>
@@ -47,7 +40,6 @@
                     <a href="/catalog?category={{$product->category_id}}&sub={{$product->subcategory_id}}" style='color:black; text-decoration: underline;'>{{$product->sub}}</a></p>
                     <p>Цвет: {{$product->color}}</p>
                     <p>Артикул: {{$product->article}}</p>
-
                     @if ($sizes !=[])
                     <div class="d-flex mb-4">
                         <strong class="text-dark mr-3">Размер:</strong>
@@ -61,11 +53,6 @@
                     @endif
                     @if (Auth::user())
                     <div class="d-flex align-items-center mb-4 pt-2 ">
-
-
-
-
-
                         <div class='counter_container'>
                         @if ($inBasket!=[])
                         <div class="input-group quantity mr-3 counter" style="width: 130px;" id='boxcounter'>
@@ -87,23 +74,8 @@
                         </div>
                         <div id='fav_btn' style='margin-left: 20px; font-size: 150%; cursor:pointer;'>
                         </div>
-
-
-                            
-                        
-
-
-
-
-
-
-
-
-
-
                     </div>
                     @endif
-
                 </div>
             </div>
         </div>
@@ -169,9 +141,7 @@
                                             <p>{{$review->content}} <i style='font-size:70%;'> <br> {{$review->created_at}}</i></p>
                                         </div>
                                     </div>
-                                    
                                     @endforeach
-
                                 </div>
                                 @if (Auth::user())
                                 <div class="col-md-6" id="create_review">
@@ -184,8 +154,6 @@
             </div>
         </div>
     </div>
-
-    <!-- Products Start -->
     <div class="container-fluid py-5">
         <h2 class="section-title position-relative text-uppercase mx-xl-5 mb-4"><span class="bg-secondary pr-3">Вам может понравится</span></h2>
         <div class="row px-xl-5">
@@ -223,11 +191,6 @@
             </div>
         </div>
     </div>
-
-
-
-
-
 <script>
     function updateStars(rating) {
         const stars = document.querySelectorAll('.star');
@@ -245,16 +208,9 @@
     }
 </script>
 
-
-
-
-
 <script src="/assets/js/favorite.js" defer type="module"></script>
 <script src="/assets/js/basket.js" defer type="module"></script>
 <script src="/assets/js/review.js" defer type="module"></script>
-
-
-
 
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 
@@ -262,7 +218,3 @@
 <script  src="/assets/js/main.js"></script> 
 
 @include ('/layouts/footer')
-
-
-
-
