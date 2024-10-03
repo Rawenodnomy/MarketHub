@@ -40,7 +40,6 @@ class SellerController extends Controller
             'images/sellers/' . $photo
         );
 
-
         return redirect('/seller/createSeller');
     }
 
@@ -72,18 +71,12 @@ class SellerController extends Controller
             array_push($err, [[ "block" => "ogrn_error", "word" => "Данный ОГРН уже используется" ]]);
         }
 
-
-
         if ($name!=[]){
             array_push($err, [[ "block" => "name_error", "word" => "Данное название уже используется" ]]);
          }
          if ($organization!=[]){
             array_push($err, [[ "block" => "organization_error", "word" => "Данная Организация  уже используется" ]]);
          }
-
-
-
-
 
         if ($validatedData['type']==1){
             $address = DB::select('SELECT * FROM `sellers` WHERE legal_address = ?', [$validatedData['addres_value']]);
@@ -96,7 +89,6 @@ class SellerController extends Controller
                 array_push($err, [[ "block" => "kpp_error", "word" => "Данный КПП уже используется" ]]);
             }
         }
-
 
         return response()->json(['success' => true, 'err' => $err]);
     }
@@ -128,7 +120,6 @@ class SellerController extends Controller
 
 
         foreach ($products as $product){
-            // dd($product);
             if ($product->count == null){
                 $sizes = DB::select('SELECT *, (SELECT sizes.size FROM sizes WHERE sizes.id=products_sizes.size_id) as size FROM `products_sizes` WHERE product_id = ?', [$product->id]);
 
@@ -182,7 +173,6 @@ class SellerController extends Controller
 
 
     function insertProduct(Request $request){
-
         $seller = DB::select('SELECT * FROM `sellers` WHERE user_id = ?', [Auth::user()->id])[0];
 
         DB::insert('INSERT INTO `products` (`name`, `category_id`, `subcategory_id`, `price`, `description`, `count`, `color_id`, `seller_id`, `created_at`, `updated_at`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)', [$request->all()['name'], $request->all()['category'], $request->all()['subcategory'], $request->all()['price'], $request->all()['description'], $request->all()['count'] ?? NULL, $request->all()['color'], $seller->id, date('Y-m-d'), date('Y-m-d')]);
@@ -212,12 +202,9 @@ class SellerController extends Controller
             DB::insert('INSERT INTO `additional_information` (`id`, `product_id`, `info`, `value`) VALUES (NULL, ?, ?, ?)', [$product_id, $item['dop'], $item['value']]);
         }
 
-
         $size_count = $request->all()['count'] ?? NULL;
 
-
         if ($size_count==null){
-
             foreach ($request->all() as $key => $value) {
                 if (strpos($key, 'size_') === 0) { 
                     $word = 'count_' . $key;
@@ -242,7 +229,6 @@ class SellerController extends Controller
             );
             $i=$i+1;
         }
-
 
         return redirect('/seller/getProducts');
     }
@@ -295,7 +281,6 @@ class SellerController extends Controller
                 $item->update = false;
             }
         }
-
 
         return view('seller.products', compact('products'));
     }
@@ -388,10 +373,8 @@ class SellerController extends Controller
             }
         }
 
-
         return view('seller.catalog', compact('seller', 'products'));
     }
-
 
 
 }
